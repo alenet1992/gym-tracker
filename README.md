@@ -1,128 +1,128 @@
-# Meu Plano de Treino
+# My Workout Plan
 
-Uma aplicação web simples e organizada para consultar e acompanhar os teus planos de treino.
+A simple and organized web application to view and track your workout plans.
 
-## Funcionalidades
+## Features
 
-### 📋 Visualização de Planos
-- **Plano 1**: Funcional + Full Body (Circuito)
-- **Plano 2**: Musculação Superior (Carga Progressiva)
-- **Plano 3**: Funcional + Pernas (Potência e Resistência)
-- **Plano 4**: Musculação Inferior (Carga Progressiva)
+### 📋 Plan Visualization
+- **Plan 1**: Functional + Full Body (Circuit)
+- **Plan 2**: Upper Body Strength (Progressive Load)
+- **Plan 3**: Functional + Legs (Power and Endurance)
+- **Plan 4**: Lower Body Strength (Progressive Load)
 
-### 🏋️ Gestão de Treinos
-- **Ver Detalhes**: Consulta todos os exercícios de cada plano
-- **Iniciar Treino**: Começa um treino com cronómetro
-- **Marcar Exercícios**: Marca exercícios como concluídos durante o treino
-- **Detalhes dos Exercícios**: Clica em qualquer exercício para ver instruções detalhadas, dicas e **vídeos/imagens demonstrativas**
-- **Conteúdo Multimédia**: Vídeos do YouTube e imagens para demonstrar a execução correta dos exercícios
-- **Indicadores Visuais**: Ícones mostram quais exercícios têm vídeo 🎥 ou imagem 📷 disponível
+### 🏋️ Workout Management
+- **View Details**: View all exercises for each plan
+- **Start Workout**: Begin a workout with timer
+- **Mark Exercises**: Mark exercises as completed during workout
+- **Exercise Details**: Click on any exercise to see detailed instructions, tips and **demonstration videos/images**
+- **Multimedia Content**: YouTube videos and images to demonstrate proper exercise execution
+- **Visual Indicators**: Icons show which exercises have video 🎥 or image 📷 available
 
-### 📊 Histórico
-- **Registo Automático**: Todos os treinos são guardados automaticamente
-- **Estatísticas**: Vê a duração e exercícios concluídos de cada treino
-- **Armazenamento Local**: Os dados ficam guardados no teu navegador
+### 📊 History
+- **Automatic Recording**: All workouts are saved automatically
+- **Statistics**: View duration and completed exercises for each workout
+- **Local Storage**: Data is stored in your browser
 
-## Como Usar
+## How to Use
 
-### 1. Iniciar o Servidor
+### 1. Start the Server
 ```bash
-cd "app de ginasio"
+cd "gym-tracker"
 python3 -m http.server 8000
 ```
 
-### 2. Abrir no Navegador
-Vai para: `http://localhost:8000`
+### 2. Open in Browser
+Go to: `http://localhost:8000`
 
-### 3. Navegar na Aplicação
+### 3. Navigate the Application
 
-#### Ver Planos
-- Na página inicial, vês os 4 planos disponíveis
-- Clica em "Ver Detalhes" para consultar todos os exercícios
-- Clica em "Iniciar Treino" para começar um treino
+#### View Plans
+- On the home page, you'll see the 4 available plans
+- Click "View Details" to see all exercises
+- Click "Start Workout" to begin a workout
 
-#### Durante o Treino
-- O cronómetro inicia automaticamente
-- Clica no nome de qualquer exercício para ver as instruções
-- Marca cada exercício como "Feito" quando completares
-- Clica em "Terminar Treino" quando acabares
+#### During Workout
+- The timer starts automatically
+- Click on any exercise name to see instructions
+- Mark each exercise as "Done" when completed
+- Click "Finish Workout" when you're done
 
-#### Consultar Histórico
-- Clica em "Histórico" no menu superior
-- Vê todos os teus treinos anteriores com estatísticas
+#### View History
+- Click "History" in the top menu
+- See all your previous workouts with statistics
 
-## Estrutura dos Planos
+## Plan Structure
 
-### Plano 1 - Funcional + Full Body
-- **Aquecimento**: 10 min (bicicleta + mobilidade)
-- **Circuito**: 3 voltas, 45"ON/15"OFF
-- **Core**: Abdominais e prancha
+### Plan 1 - Functional + Full Body
+- **Warm-up**: 10 min (bike + mobility)
+- **Circuit**: 3 rounds, 45"ON/15"OFF
+- **Core**: Abs and plank
 
-### Plano 2 - Musculação Superior
-- **Aquecimento**: 10 min (elíptica + ativação)
-- **Força**: 3x15 reps (costas, peito, braços)
+### Plan 2 - Upper Body Strength
+- **Warm-up**: 10 min (elliptical + activation)
+- **Strength**: 3x15 reps (back, chest, arms)
 - **Cardio**: 10 min bike
 
-### Plano 3 - Funcional + Pernas
-- **Aquecimento**: 8-10 min (escadas + mobilidade)
-- **Circuito**: 2-3 voltas (exercícios funcionais)
-- **Core**: Prancha lateral + V-ups
+### Plan 3 - Functional + Legs
+- **Warm-up**: 8-10 min (stairs + mobility)
+- **Circuit**: 2-3 rounds (functional exercises)
+- **Core**: Side plank + V-ups
 
-### Plano 4 - Musculação Inferior
-- **Aquecimento**: 5-7 min (caminhada + mobilidade)
-- **Força**: 3 séries progressivas (pernas completas)
-- **Cardio**: 10 min corrida leve
+### Plan 4 - Lower Body Strength
+- **Warm-up**: 5-7 min (walking + mobility)
+- **Strength**: 3 progressive sets (complete legs)
+- **Cardio**: 10 min light running
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **HTML5**: Estrutura da aplicação
-- **CSS3**: Design responsivo e moderno
-- **JavaScript**: Lógica da aplicação e interatividade
-- **LocalStorage**: Armazenamento do histórico de treinos
-- **Font Awesome**: Ícones
+- **HTML5**: Application structure
+- **CSS3**: Responsive and modern design
+- **JavaScript**: Application logic and interactivity
+- **LocalStorage**: Workout history storage
+- **Font Awesome**: Icons
 
-## Funcionalidades Técnicas
+## Technical Features
 
-### Conteúdo Multimédia
-- **Vídeos**: Integração com YouTube para demonstrações dos exercícios
-- **Imagens**: Fotos ilustrativas da execução correta
-- **Indicadores**: Ícones visuais para identificar exercícios com conteúdo multimédia
-- **Responsivo**: Vídeos e imagens adaptam-se a todos os tamanhos de ecrã
+### Multimedia Content
+- **Videos**: YouTube integration for exercise demonstrations
+- **Images**: Illustrative photos of proper execution
+- **Indicators**: Visual icons to identify exercises with multimedia content
+- **Responsive**: Videos and images adapt to all screen sizes
 
-### Armazenamento Local
-- Os treinos são guardados no `localStorage` do navegador
-- Mantém histórico dos últimos 50 treinos
-- Dados persistem entre sessões
+### Local Storage
+- Workouts are saved in the browser's `localStorage`
+- Maintains history of the last 50 workouts
+- Data persists between sessions
 
-### Interface Responsiva
-- Adaptada para desktop, tablet e mobile
-- Design moderno com gradientes e sombras
-- Animações suaves e feedback visual
-- Vídeos com aspect ratio 16:9 responsivo
+### Responsive Interface
+- Adapted for desktop, tablet and mobile
+- Modern design with gradients and shadows
+- Smooth animations and visual feedback
+- Videos with responsive 16:9 aspect ratio
 
-### Atalhos de Teclado
-- **ESC**: Fechar modal de detalhes
-- **1-4**: Acesso rápido aos planos (na vista principal)
+### Keyboard Shortcuts
+- **ESC**: Close details modal
+- **1-4**: Quick access to plans (on main view)
 
-## Personalização
+## Customization
 
-Podes facilmente personalizar:
+You can easily customize:
 
-1. **Adicionar Novos Exercícios**: Edita o objeto `workoutPlans` em `script.js`
-2. **Modificar Cores**: Altera as variáveis CSS em `styles.css`
-3. **Adicionar Vídeos/Imagens**: Inclui URLs nos dados dos exercícios usando a estrutura:
+1. **Add New Exercises**: Edit the `workoutPlans` object in `script.js`
+2. **Modify Colors**: Change CSS variables in `styles.css`
+3. **Add Videos/Images**: Include URLs in exercise data using the structure:
    ```javascript
    media: {
-       type: "video", // ou "image"
-       url: "https://www.youtube.com/embed/VIDEO_ID", // ou URL da imagem
-       thumbnail: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg", // para vídeos
-       alt: "Descrição da imagem" // para imagens
+       type: "video", // or "image"
+       url: "https://www.youtube.com/embed/VIDEO_ID", // or image URL
+       thumbnail: "https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg", // for videos
+       alt: "Image description" // for images
    }
    ```
 
-## Suporte
+## Support
 
-A aplicação funciona em todos os navegadores modernos:
+The application works on all modern browsers:
 - Chrome 60+
 - Firefox 55+
 - Safari 12+
@@ -130,4 +130,4 @@ A aplicação funciona em todos os navegadores modernos:
 
 ---
 
-**Bons treinos! 💪**
+**Happy workouts! 💪**
