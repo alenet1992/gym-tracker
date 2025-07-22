@@ -51,12 +51,66 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useWorkoutStore } from '@/stores/workoutStore';
 
 const workoutStore = useWorkoutStore();
 
 const workoutHistory = computed(() => workoutStore.workoutHistory);
+
+const features = ref([
+  {
+    id: 1,
+    icon: 'fas fa-dumbbell',
+    title: 'Workout Plans',
+    description: 'Access 4 different workout plans designed for various fitness goals and training styles.'
+  },
+  {
+    id: 2,
+    icon: 'fas fa-stopwatch',
+    title: 'Timer & Tracking',
+    description: 'Built-in timer and exercise tracking to monitor your progress during workouts.'
+  },
+  {
+    id: 3,
+    icon: 'fas fa-chart-line',
+    title: 'Progress History',
+    description: 'View detailed statistics and history of all your completed workout sessions.'
+  },
+  {
+    id: 4,
+    icon: 'fas fa-play-circle',
+    title: 'Exercise Videos',
+    description: 'Watch demonstration videos and view images for proper exercise execution.'
+  }
+]);
+
+const stats = computed(() => [
+  {
+    id: 1,
+    icon: 'fas fa-fire',
+    value: workoutHistory.value.length.toString(),
+    label: 'Total Workouts'
+  },
+  {
+    id: 2,
+    icon: 'fas fa-clock',
+    value: formatDuration(totalWorkoutTime.value),
+    label: 'Total Time'
+  },
+  {
+    id: 3,
+    icon: 'fas fa-check-circle',
+    value: totalExercisesCompleted.value.toString(),
+    label: 'Exercises Completed'
+  },
+  {
+    id: 4,
+    icon: 'fas fa-calendar-check',
+    value: currentStreak.value.toString(),
+    label: 'Day Streak'
+  }
+]);
 
 const totalWorkoutTime = computed(() => {
   return workoutHistory.value.reduce((total, session) => total + session.duration, 0);
