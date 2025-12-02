@@ -1,21 +1,5 @@
 <template>
   <div id="app">
-    <header class="app-header">
-      <div class="container">
-        <div class="header-content">
-          <div class="logo">
-            <i class="fas fa-dumbbell"></i>
-            <h1>GymTracker</h1>
-          </div>
-          <nav class="desktop-nav">
-            <router-link to="/" class="nav-link">Home</router-link>
-            <router-link to="/plans" class="nav-link">Plans</router-link>
-            <router-link to="/history" class="nav-link">History</router-link>
-          </nav>
-        </div>
-      </div>
-    </header>
-
     <main class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="page-transition" mode="out-in">
@@ -23,25 +7,6 @@
         </transition>
       </router-view>
     </main>
-
-    <nav class="bottom-nav">
-      <router-link to="/" class="nav-item">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </router-link>
-      <router-link to="/plans" class="nav-item">
-        <i class="fas fa-list"></i>
-        <span>Plans</span>
-      </router-link>
-      <router-link to="/active" class="nav-item">
-        <i class="fas fa-play"></i>
-        <span>Active</span>
-      </router-link>
-      <router-link to="/history" class="nav-item">
-        <i class="fas fa-chart-line"></i>
-        <span>History</span>
-      </router-link>
-    </nav>
 
     <ExerciseModal />
 
@@ -53,25 +18,10 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useWorkoutStore } from '@/stores/workoutStore';
 import ExerciseModal from '@/components/ExerciseModal.vue';
-import WorkoutWarningModal from '@/components/WorkoutWarningModal.vue';
 
 const route = useRoute();
 const workoutStore = useWorkoutStore();
 
-const navItems = computed(() => [
-  {
-    name: 'Plans',
-    path: '/plans',
-    label: 'Plans',
-    icon: 'fas fa-list-ul'
-  },
-  {
-    name: 'History',
-    path: '/history',
-    label: 'History',
-    icon: 'fas fa-history'
-  }
-]);
 
 // Prevent page reload during active workout
 window.addEventListener('beforeunload', (e) => {

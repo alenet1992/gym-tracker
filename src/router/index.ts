@@ -5,7 +5,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/HomeView.vue'),
+    component: () => import('@/views/PlansView.vue'),
     meta: { title: 'Workout Plans' }
   },
   {
@@ -27,12 +27,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/ActiveWorkoutView.vue'),
     meta: { title: 'Active Workout' },
     props: true
-  },
-  {
-    path: '/history',
-    name: 'History',
-    component: () => import('@/views/HistoryView.vue'),
-    meta: { title: 'History' }
   },
   {
     path: '/:pathMatch(.*)*',

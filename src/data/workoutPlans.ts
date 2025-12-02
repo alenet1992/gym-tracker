@@ -2,388 +2,348 @@ import type { WorkoutPlan } from '@/types';
 
 export const workoutPlans: WorkoutPlan[] = [
   {
-    id: '1',
-    name: 'Plan 1 – Functional + Full Body (Circuit)',
-    description: 'Complete functional workout with full-body exercises in circuit format',
-    sections: [
+    "id": "1",
+    "name": "Dia 1 – Circuito Funcional Corpo Inteiro",
+    "description": "Circuito funcional de corpo inteiro desenhado para melhorar a condição física, força e perda de gordura.",
+    "sections": [
       {
-        name: 'Warm-up (10 minutes)',
-        exercises: [
+        "name": "Aquecimento (8–10 minutos)",
+        "exercises": [
           {
-            name: 'Bike + joint mobility',
-            description: 'Pedal on a stationary bike for 5-7 minutes, followed by mobility exercises for shoulders, hips and knees.',
-            tips: 'Maintain a moderate pace on the bike. Make circular movements with your shoulders. Perform squats to mobilize hips and knees.'
+            "name": "Remo + mobilidade dinâmica",
+            "description": "Remar levemente durante 4–5 minutos seguido de mobilidade para ancas, ombros e coluna torácica.",
+            "tips": "Ritmo suave. Peito aberto. Mobilizar ancas de forma controlada.",
           }
         ]
       },
       {
-        name: 'Circuit 1 (3 rounds - 45" ON / 15" OFF)',
-        exercises: [
+        "name": "Circuito (3 voltas – 40\" ATIVO / 20\" DESCANSO)",
+        "exercises": [
           {
-            name: 'Kettlebell Swing',
-            description: 'Explosive movement with kettlebell, starting with hip flexion and powerful extension.',
-            tips: 'Keep your back straight. Use hip power, not arms. Always look forward.',
-            media: {
-              type: 'video',
-              url: 'https://www.youtube.com/embed/YSxHifyI6s8',
-              thumbnail: 'https://img.youtube.com/vi/YSxHifyI6s8/maxresdefault.jpg'
+            "name": "Kettlebell Deadlift High Pull",
+            "description": "Padrão de anca com puxada explosiva levando o kettlebell à altura do peito.",
+            "tips": "Explodir com as ancas. Cotovelos altos. Costas direitas.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/kmmnVzHlWmU?si=5bEDBSEu0KfObodC",
+              "thumbnail": "https://img.youtube.com/vi/kmmnVzHlWmU/maxresdefault.jpg"
             }
           },
           {
-            name: 'Burpee with jump',
-            description: 'Complete exercise that combines squat, plank, push-up and vertical jump.',
-            tips: 'Keep your core engaged. Land softly after jumping. Maintain a steady pace.',
-            media: {
-              type: 'video',
-              url: 'https://www.youtube.com/embed/TU8QYVW0gDU',
-              thumbnail: 'https://img.youtube.com/vi/TU8QYVW0gDU/maxresdefault.jpg'
+            "name": "Salto para Caixa",
+            "description": "Salto explosivo para cima da caixa para desenvolvimento de potência.",
+            "tips": "Aterrar suavemente. Usar os braços. Escolher altura segura.",
+          },
+          {
+            "name": "Remada TRX",
+            "description": "Remada em suspensão envolvendo costas, bíceps e core.",
+            "tips": "Corpo direito. Puxar com as costas. Controlar a descida.",
+          },
+          {
+            "name": "Flexão com Rotação em T",
+            "description": "Flexão seguida de rotação abrindo o peito para o lado.",
+            "tips": "Core firme. Controlar a rotação.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/dSDoVEV2298?si=cnB6X3tXRcczVxO6",
+              "thumbnail": "https://img.youtube.com/vi/2XFaK3bgT7w/maxresdefault.jpg"
             }
           },
           {
-            name: 'Rowing (cardio)',
-            description: 'Cardiovascular exercise on the rowing machine, working the whole body.',
-            tips: 'Pull with your back, not just your arms. Keep your legs firm. Breathe in a controlled manner.', 
-          },
-          {
-            name: 'Pull Up (with elastic band)',
-            description: 'Assisted pull exercise with elastic band to work back and biceps.',
-            tips: 'Lower in a controlled manner. Squeeze your shoulder blades. Use the elastic only as assistance.', 
-            media: {
-              type: 'image',
-              url: 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2019/12/pull-up-pullup-gym-1296x728-header-1296x728.jpg?w=1155&h=1528',
-              alt: 'Dynamic plank with shoulder tap demonstration'
+            "name": "Slam Ball",
+            "description": "Slam explosivo usando a força do corpo inteiro.",
+            "tips": "Ativar o core. Costas direitas. Extensão total.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/k9W6g9LvXDI?si=grZDBS41S0TaPE3I",
+              "thumbnail": "https://img.youtube.com/vi/k9W6g9LvXDI/maxresdefault.jpg"
             }
           },
           {
-            name: 'Dynamic plank (with shoulder tap)',
-            description: 'Plank with alternating movement of touching the opposite shoulder, maintaining core stability.',
-            tips: 'Avoid swaying your hips. Keep your core engaged. Controlled movements.',
-            media: {
-              type: 'image',
-              url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-              alt: 'Demonstração de prancha com toque no ombro'
-            }
-          },
-          {
-            name: 'Jump squat',
-            description: 'Explosive squat followed by vertical jump, working leg power.',
-            tips: 'Lower to 90 degrees. Jump as high as possible. Land softly.',
-            media: {
-              type: 'video',
-              url: 'https://www.youtube.com/embed/CVaEhXotL7M',
-              thumbnail: 'https://img.youtube.com/vi/CVaEhXotL7M/maxresdefault.jpg'
-            }
-          },
-          {
-            name: 'Shoulder Press with dumbbells',
-            description: 'Shoulder press with dumbbells, working deltoids and triceps.',
-            tips: 'Keep your core stable. Don\'t arch your back. Controlled movement.', 
-            media: {
-              type: 'image',
-              url: 'https://www.nit.pt/wp-content/uploads/2016/10/886ac4a2-afe5-44f8-bdcd-355dafb924da-754x394.jpg',
-              alt: 'Shoulder Press with dumbbells'
-            }
-          }
-        ]
-      },
-      {
-        name: 'Core',
-        exercises: [
-          {
-            name: 'Bicycle crunches',
-            description: 'Alternating movement simulating pedaling, working obliques and rectus abdominis.',
-            tips: 'Touch elbow to opposite knee. Keep your back on the floor. Controlled movement.'
-          },
-          {
-            name: 'Front plank',
-            description: 'Static position maintaining body alignment, strengthening the entire core.',
-            tips: 'Body in straight line. Don\'t let your hips drop. Breathe normally.'
+            "name": "Bicicleta de Ar (intensidade)",
+            "description": "Intervalos de alta intensidade envolvendo o corpo inteiro.",
+            "tips": "Ritmo consistente. Usar braços e pernas."
           }
         ]
       }
     ]
   },
   {
-    id: '2',
-    name: 'Plan 2 – Upper Body Strength (Progressive Load)',
-    description: 'Training focused on upper body muscle development with load progression',
-    sections: [
+    "id": "2",
+    "name": "Dia 2 – Hipertrofia de Membros Superiores",
+    "description": "Treino focado em hipertrofia dos membros superiores para força e crescimento muscular.",
+    "sections": [
       {
-        name: 'Warm-up (10 minutes)',
-        exercises: [
+        "name": "Força (3–4 séries de 10–12 repetições)",
+        "exercises": [
           {
-            name: 'Elliptical or rope + miniband activation',
-            description: 'Cardiovascular warm-up followed by muscle activation with minibands.',
-            tips: '5-7 minutes of light cardio. Activate shoulders and back with minibands. Prepare the joints.'
-          }
-        ]
-      },
-      {
-        name: 'Strength (3 sets of 15 reps)',
-        exercises: [
+            "name": "Press de Peito",
+            "description": "Movimento de empurrar horizontal focado no peito e tríceps.",
+            "tips": "Controlar o ritmo. Ombros estáveis."
+          },
           {
-            name: 'Seated Row (back)',
-            description: 'Seated rowing working latissimus dorsi and rhomboids.',
-            tips: 'Squeeze your shoulder blades. Keep your back straight. Pull to your abdomen.',
-            media: {
-              type: 'image',
-              url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-              alt: 'Seated row demonstration'
+            "name": "Remada Unilateral com Haltere",
+            "description": "Remada unilateral para ativação das costas e simetria.",
+            "tips": "Puxar em direção à anca. Controlar a fase descendente."
+          },
+          {
+            "name": "Arnold Press",
+            "description": "Variação de press de ombro aumentando a ativação dos deltoides.",
+            "tips": "Rodar suavemente. Evitar arquear.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mXRhpXwW-gs?si=fWxZyO464ZB9a5oS",
+              "thumbnail": "https://img.youtube.com/vi/mXRhpXwW-gs/maxresdefault.jpg"
             }
           },
           {
-            name: 'Lat Pulldown (back)',
-            description: 'High pull working latissimus dorsi and biceps.',
-            tips: 'Pull to your chest. Lean your torso slightly. Lower in a controlled manner.',
-            media: {
-              type: 'image',
-              url: 'https://training.fit/wp-content/uploads/2020/02/latzug-enger-griff-800x448.png',
-              alt: 'Lat Pulldown (back)'
+            "name": "Crossover de Cabos (Alto para Baixo)",
+            "description": "Crossover de cabos enfatizando a ativação do peito inferior.",
+            "tips": "Cotovelos ligeiramente dobrados. Apertar em baixo.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/Lc-cv1iLLrw?si=u5eeTaIPTzJTu4M7",
+              "thumbnail": "https://img.youtube.com/vi/Lc-cv1iLLrw/maxresdefault.jpg"
             }
           },
           {
-            name: 'Incline barbell bench press (chest)',
-            description: 'Exercise for upper chest, anterior deltoids and triceps.',
-            tips: 'Bench at 30-45 degrees. Lower to your chest. Keep your feet on the floor.', 
-            media: {
-              type: 'image',
-              url: 'https://www.hipertrofia.org/blog/wp-content/uploads/2018/08/supino-inclinado-com-barra.jpg',
-              alt: 'Incline barbell bench press (chest)'
+            "name": "Curl de Bíceps com Halteres em Banco Inclinado",
+            "description": "Curl de bíceps em banco inclinado aumentando o alongamento e tensão.",
+            "tips": "Manter cotovelos fixos. Descida lenta.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/9-V1xBBCRW4?si=Q3G44RpCFRkUV3sK",
+              "thumbnail": "https://img.youtube.com/vi/soxrZlIl35U/maxresdefault.jpg"
             }
           },
           {
-            name: 'Dumbbell flyes (chest)',
-            description: 'Chest isolation with opening and closing movement.',
-            tips: 'Slight bend in elbows. Lower until you feel a stretch. Controlled movement.',
-            media: {
-              type: 'image',
-              url: 'https://www.fitness4all.pt/wp-content/uploads/2016/02/supino3-wpp1660516778830.jpg',
-              alt: 'Dumbbell flyes (chest)'
+            "name": "Dips de Tríceps",
+            "description": "Dips com peso corporal focados nos tríceps.",
+            "tips": "Tronco vertical. Dobrar até 90 graus.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/0326dy_-CzM",
+              "thumbnail": "https://img.youtube.com/vi/0326dy_-CzM/maxresdefault.jpg"
             }
-          },
-          {
-            name: 'Bicep curl com barra',
-            description: 'Flexão de cotovelo trabalhando bíceps braquial.',
-            tips: 'Cotovelos fixos ao corpo. Movimento completo. Desça controladamente.',
-            media: {
-              type: 'image',
-              url: 'https://www.hipertrofia.org/blog/wp-content/uploads/2019/04/ez-barbell-curl.gif',
-              alt: 'Bicep curl com barra'
-            }
-          },
-          {
-            name: 'Tricep na polia com corda',
-            description: 'Extensão de cotovelo trabalhando tríceps braquial.',
-            tips: 'Cotovelos fixos. Abra a corda no final. Movimento controlado.',
-            media: {
-              type: 'image',
-              url: 'https://static.strengthlevel.com/images/exercises/tricep-rope-pushdown/tricep-rope-pushdown-400.avif',
-              alt: 'Tricep na polia com corda'
-            }
-          }
-        ]
-      },
-      {
-        name: 'Cardio final (10 minutos)',
-        exercises: [
-          {
-            name: 'Bike: moderado/intenso',
-            description: 'Finalização cardiovascular com intensidade moderada a intensa.',
-            tips: 'Varie a intensidade. Mantenha boa postura. Hidrate-se bem.'
           }
         ]
       }
     ]
   },
   {
-    id: '3',
-    name: 'Plano 3 – Funcional + Pernas (Potência e Resistência)',
-    description: 'Treino funcional focado no desenvolvimento de potência e resistência das pernas',
-    sections: [
+    "id": "3",
+    "name": "Dia 3 – Membros Inferiores + Condicionamento",
+    "description": "Força dos membros inferiores combinada com condicionamento metabólico.",
+    "sections": [
       {
-        name: 'Aquecimento (8-10 minutos)',
-        exercises: [
+        "name": "Força + Condicionamento (10–12 repetições)",
+        "exercises": [
           {
-            name: 'Escadas + mobilidade dinâmica',
-            description: 'Subida de escadas seguida de exercícios de mobilidade dinâmica.',
-            tips: 'Suba 2 degraus de cada vez. Mobilize quadris e tornozelos. Aqueça gradualmente.'
-          }
-        ]
-      },
-      {
-        name: 'Circuito (2 a 3 voltas)',
-        exercises: [
+            "name": "Agachamento com Barra",
+            "description": "Exercício composto principal para quadríceps e glúteos.",
+            "tips": "Peito alto. Pés à largura dos ombros."
+          },
           {
-            name: 'Walking Lunge com halteres',
-            description: 'Passadas alternadas com halteres, trabalhando quadríceps e glúteos.',
-            tips: 'Desça até 90 graus. Mantenha o tronco ereto. Passo amplo.',
-            media: {
-              type: 'image',
-              thumbnail: 'https://img.youtube.com/vi/L8fvypPrzzs/maxresdefault.jpg',
-              url: 'https://www.myprotein.pt/images?url=https://blogscdn.thehut.net/app/uploads/sites/461/2019/08/Walking-Lungesopt_hero_1566910002.jpg&auto=avif&width=1800&fit=crop'
+            "name": "Peso Morto Romeno",
+            "description": "Padrão de anca focado nos isquiotibiais.",
+            "tips": "Coluna neutra. Ancas para trás.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/hFoLEO8TrSk?si=oaejWXnPNW27AB1X",
+              "thumbnail": "https://img.youtube.com/vi/hFoLEO8TrSk/maxresdefault.jpg"
             }
           },
           {
-            name: 'Wall Ball',
-            description: 'Agachamento com arremesso de bola medicinal na parede.',
-            tips: 'Agache profundo. Arremesse acima da cabeça. Movimento explosivo.'
+            "name": "Longe Caminhando",
+            "description": "Exercício unilateral dinâmico para pernas e glúteos.",
+            "tips": "Passos longos e controlados.",
           },
           {
-            name: 'Corda naval',
-            description: 'Ondulações com corda pesada, trabalhando todo o corpo.',
-            tips: 'Mantenha o core contraído. Movimento alternado. Intensidade alta.',
+            "name": "Empurrar Trenó",
+            "description": "Movimento de condicionamento baseado em potência.",
+            "tips": "Impulsionar com as pernas. Peito baixo.",
           },
           {
-            name: 'Mountain Climbers',
-            description: 'Simulação de escalada em posição de prancha.',
-            tips: 'Mantenha a prancha. Movimento rápido. Core sempre contraído.',
-            media: {
-              type: 'image',
-              url: 'https://hips.hearstapps.com/hmg-prod/images/rw-jess-mountain-climber-1596573079.jpg?crop=0.673xw:1.00xh;0.0993xw,0&resize=1200:*',
-              alt: 'Demonstração de Mountain Climbers'
-            }
-          },
-          {
-            name: 'Subida na caixa com salto',
-            description: 'Subida explosiva na caixa seguida de salto.',
-            tips: 'Aterrisse suavemente. Use os braços para impulso. Caixa na altura do joelho.'
-          },
-          {
-            name: 'Agachamento com kettlebell',
-            description: 'Agachamento segurando kettlebell junto ao peito.',
-            tips: 'Desça até paralelo. Mantenha o peito alto. Peso nos calcanhares.',
-            media: {
-              type: 'image',
-              url: 'https://www.myprotein.pt/images?url=https://blogscdn.thehut.net/wp-content/uploads/sites/461/2015/11/24222433/genuflexiuni.jpg&format=webp&auto=avif&width=587&height=408&fit=crop',
-              alt: 'Agachamento com kettlebell'
-            }
-          },
-          {
-            name: 'Tríceps na caixa',
-            description: 'Flexão de tríceps usando caixa ou banco como apoio.',
-            tips: 'Desça até 90 graus. Mantenha o corpo próximo. Movimento controlado.',
-            media: {
-              type: 'image',
-              url: 'https://www.nit.pt/wp-content/uploads/2016/10/a0bbdbf5-5535-4311-9de7-d56c571fe536-754x394.jpg',
-              alt: 'Tríceps na caixa'
-            }
-          }
-        ]
-      },      
-      {
-        name: 'Core final (1 round)',
-        exercises: [
-          {
-            name: 'Prancha lateral com elevação de perna',
-            description: 'Prancha lateral com movimento de elevação da perna superior.',
-            tips: 'Mantenha o corpo alinhado. Eleve a perna controladamente. Não deixe o quadril cair.'
-          },
-          {
-            name: 'Abdominal V-up',
-            description: 'Flexão simultânea de tronco e pernas formando um V.',
-            tips: 'Toque os pés com as mãos. Mantenha as pernas estendidas. Movimento controlado.'
+            "name": "Corda de Saltar",
+            "description": "Condicionamento leve que melhora agilidade e queima de gordura.",
+            "tips": "Saltos pequenos. Ombros relaxados."
           }
         ]
       }
     ]
   },
   {
-    id: '4',
-    name: 'Plano 4 – Musculação Inferior (Carga Progressiva)',
-    description: 'Treino focado no desenvolvimento da musculatura inferior com progressão de carga',
-    sections: [
+    "id": "4",
+    "name": "Dia 4 – Força Funcional + Core",
+    "description": "Movimentos de força funcional combinados com trabalho de estabilidade do core.",
+    "sections": [
       {
-        name: 'Aquecimento (5-7 minutos)',
-        exercises: [
+        "name": "Força + Core",
+        "exercises": [
           {
-            name: 'Caminhada inclinada ou elíptica + mobilidade',
-            description: 'Aquecimento cardiovascular seguido de mobilidade específica.',
-            tips: 'Inclinação moderada. Mobilize quadris em todas as direções. Circule os tornozelos.'
+            "name": "Kettlebell Clean & Press",
+            "description": "Clean explosivo seguido de press acima da cabeça.",
+            "tips": "Usar as pernas para potência. Estabilizar acima da cabeça.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/ckjR4jYtuYc?si=p21ShZo1bjnF8nHh",
+              "thumbnail": "https://img.youtube.com/vi/8ZxP5d8QZ7o/maxresdefault.jpg"
+            }
+          },
+          {
+            "name": "Pull-up",
+            "description": "Puxada vertical ativando costas e bíceps.",
+            "tips": "Peito em direção à barra. Controlar a descida."
+          },
+          {
+            "name": "Hip Thrust",
+            "description": "Levantamento dominante de glúteos aumentando a potência da cadeia posterior.",
+            "tips": "Apertar no topo. Queixo para baixo.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/4z_2oHvIvkA?si=mWiPlFkJ2KpaMAvk",
+              "thumbnail": "https://img.youtube.com/vi/MN0C-xRRny8/maxresdefault.jpg"
+            }
+          },
+          {
+            "name": "Farmer’s Carry",
+            "description": "Transporte carregado fortalecendo a pega, core e postura.",
+            "tips": "Caminhar direito. Core firme.",
+            "media": {
+              "type": "image",
+              "url": "https://www.youtube.com/embed/8OtwXwrJizk?si=97YSF_pQAtjHwvrK",
+              "alt": "Exercício de Farmer’s Carry"
+            }
+          },
+          {
+            "name": "Elevação de Joelhos Suspenso",
+            "description": "Exercício de ativação abdominal inferior.",
+            "tips": "Evitar balançar. Movimento controlado."
+          },
+          {
+            "name": "Prancha",
+            "description": "Estabilização estática do core mantendo o alinhamento.",
+            "tips": "Core firme. Coluna neutra."
           }
         ]
-      },
+      }
+    ]
+  }, 
+  {
+    "id": "5",
+    "name": "Abdominal + Cardio Blast",
+    "description": "Focused conditioning session combining high-intensity cardio with core strengthening.",
+    "sections": [
       {
-        name: 'Força (3 séries, aumentar peso por série)',
-        exercises: [
+        "name": "Warm-up (5 minutes)",
+        "exercises": [
           {
-            name: 'Leg Extension',
-            description: 'Extensão de joelhos trabalhando quadríceps.',
-            tips: 'Movimento controlado. Pausa no topo. Não trave os joelhos.',
-            media: {
-              type: 'image',
-              url: 'https://gymgeek.com/wp-content/uploads/2024/02/machine-leg-extensions.png',
-              alt: 'Leg Extension'
-            }
-          },
-          {
-            name: 'Leg Curl',
-            description: 'Flexão de joelhos trabalhando isquiotibiais.',
-            tips: 'Quadris fixos no banco. Movimento completo. Desça controladamente.',
-            media: {
-              type: 'image',
-              url: 'https://gymgeek.com/wp-content/uploads/2024/02/machine-leg-extensions.png',
-              alt: 'Leg Extension'
-            }
-          },
-          {
-            name: 'Leg Press',
-            description: 'Pressão de pernas trabalhando quadríceps e glúteos.',
-            tips: 'Desça até 90 graus. Pés na largura dos ombros. Não trave os joelhos.',
-            media: {
-              type: 'image',
-              url: 'https://training.fit/wp-content/uploads/2020/03/beinbeugen-liegend-geraet.png',
-              alt: 'Leg Press'
-            }
-          },
-          {
-            name: 'Gémeos na Leg Press',
-            description: 'Elevação de calcanhares na leg press trabalhando panturrilhas.',
-            tips: 'Movimento completo. Pausa no topo. Desça controladamente.',
-            media: {
-              type: 'image',
-              url: 'https://ginasiovirtual.com/wp-content/uploads/2021/06/Gemeos-na-prensa.jpg',
-              alt: 'Gémeos na Leg Press'
-            }
-          },
-          {
-            name: 'Deadlift com barra',
-            description: 'Levantamento terra trabalhando posterior da coxa e glúteos.',
-            tips: 'Mantenha as costas retas. Barra próxima ao corpo. Movimento dos quadris.',
-            media: {
-              type: 'video',
-              url: 'https://nerdfit.com.br/wp-content/uploads/coluna-netra.jpg',
-              thumbnail: 'Deadlift com barra'
-            }
-          },
-          {
-            name: 'Bulgarian Split Squat',
-            description: 'Agachamento unilateral com pé traseiro elevado.',
-            tips: 'Desça verticalmente. Peso na perna da frente. Mantenha o equilíbrio.', 
-            media: {
-              type: 'video',
-              url: 'https://image-tc.galaxy.tf/wijpeg-3z4q664j4hp77n464taxm3j3m/how-to-do-a-bulgarian-split-squat_standard.jpg?crop=182%2C0%2C837%2C628&width=928',
-              thumbnail: 'Deadlift com barra'
-            }
-          },
-          {
-            name: 'Agachamento na barra fixa',
-            description: 'Agachamento livre com barra nas costas.',
-            tips: 'Desça até paralelo. Joelhos alinhados com os pés. Peito alto.', 
-            media: {
-              type: 'image',
-              url: 'https://s2-ge.glbimg.com/Elfw2jgghetu5Bgo05Rsw3iWM6s=/0x0:1254x836/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2024/t/h/zsPtNAQDyvOxgTasxSVQ/istock-1391565792.jpg',
-              thumbnail: 'Deadlift com barra'
+            "name": "Light Jog + Torso Mobility",
+            "description": "Jog slowly for 2 minutes followed by torso rotations and side bends.",
+            "tips": "Keep movement relaxed. Increase body temperature gradually.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/2vjVfT1YxR0",
+              "thumbnail": "https://img.youtube.com/vi/2vjVfT1YxR0/maxresdefault.jpg"
             }
           }
         ]
       },
+
       {
-        name: 'Cardio final (10 minutos)',
-        exercises: [
+        "name": "Cardio Block (3 rounds – 45\" ON / 15\" OFF)",
+        "exercises": [
           {
-            name: 'Corrida leve ou elíptica',
-            description: 'Finalização cardiovascular com intensidade leve a moderada.',
-            tips: 'Ritmo confortável. Respire profundamente. Relaxe os músculos.'
+            "name": "High Knees",
+            "description": "Run on the spot bringing knees to hip height.",
+            "tips": "Stay tall. Fast footwork.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/OAJ_J3EZkdY",
+              "thumbnail": "https://img.youtube.com/vi/OAJ_J3EZkdY/maxresdefault.jpg"
+            }
+          },
+          {
+            "name": "Mountain Climbers",
+            "description": "Fast knee drives from plank position.",
+            "tips": "Keep hips low. Rhythm over speed.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/cnyTQDSE884",
+              "thumbnail": "https://img.youtube.com/vi/cnyTQDSE884/maxresdefault.jpg"
+            }
+          },
+          {
+            "name": "Jump Rope",
+            "description": "Continuous rope jumping for cardio endurance.",
+            "tips": "Small jumps. Relax shoulders.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/u3zgHI8QnqE",
+              "thumbnail": "https://img.youtube.com/vi/u3zgHI8QnqE/maxresdefault.jpg"
+            }
+          }
+        ]
+      },
+
+      {
+        "name": "Core Block (3 rounds)",
+        "exercises": [
+          {
+            "name": "Bicycle Crunch",
+            "description": "Rotation-based abdominal exercise engaging obliques.",
+            "tips": "Elbow to opposite knee. Don't pull neck.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/9FGilxCbdz8",
+              "thumbnail": "https://img.youtube.com/vi/9FGilxCbdz8/maxresdefault.jpg"
+            }
+          },
+          {
+            "name": "Leg Raises",
+            "description": "Lower-ab movement lifting legs upward with control.",
+            "tips": "Lower slowly. Avoid arching the lower back.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/JB2oyawG9KI",
+              "thumbnail": "https://img.youtube.com/vi/JB2oyawG9KI/maxresdefault.jpg"
+            }
+          },
+          {
+            "name": "Russian Twist",
+            "description": "Seated rotation for oblique activation.",
+            "tips": "Keep core tight. Rotate from torso.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/wkD8rjkodUI",
+              "thumbnail": "https://img.youtube.com/vi/wkD8rjkodUI/maxresdefault.jpg"
+            }
+          }
+        ]
+      },
+
+      {
+        "name": "Finisher (1 round)",
+        "exercises": [
+          {
+            "name": "Plank Hold",
+            "description": "Static core stabilization maintaining alignment.",
+            "tips": "Glutes squeezed. Neutral spine.",
+            "media": {
+              "type": "image",
+              "url": "https://images.unsplash.com/photo-1594737625785-c03242e8e2b1?w=800",
+              "alt": "Plank position"
+            }
+          },
+          {
+            "name": "Sprint Burst (20 seconds)",
+            "description": "Maximum-effort sprint to finish the session.",
+            "tips": "Lean slightly forward. Fast turnover.",
+            "media": {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/0YHBDZgN3Vw",
+              "thumbnail": "https://img.youtube.com/vi/0YHBDZgN3Vw/maxresdefault.jpg"
+            }
           }
         ]
       }
