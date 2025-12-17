@@ -1,0 +1,19 @@
+{
+  "name": "Gym App",
+  "short_name": "Gym",
+  "description": "Aplicativo de treino personalizado para acompanhar exercícios e progresso.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
