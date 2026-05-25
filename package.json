@@ -6,7 +6,7 @@
     "dev": "concurrently -n server,client -c blue,green \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "nest start --watch",
     "dev:client": "vite --config client/vite.config.ts",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:server && npm run build:client",
     "build:client": "vite build --config client/vite.config.ts",
     "build:server": "nest build",
     "start": "NODE_ENV=production node dist/main",
