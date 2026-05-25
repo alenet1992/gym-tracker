@@ -5,7 +5,16 @@
     <p class="page-subtitle">Choose your plan and start training</p>
     </div>
 
-    <div class="plans-grid">
+    <div v-if="plansLoading" class="plans-status">
+      <p>A carregar planos...</p>
+    </div>
+
+    <div v-else-if="plansError" class="plans-status plans-status--error">
+      <p>{{ plansError }}</p>
+      <button class="btn btn-secondary" @click="retryLoadPlans">Tentar novamente</button>
+    </div>
+
+    <div v-else class="plans-grid">
       <div 
         v-for="plan in plans" 
         :key="plan.id"
@@ -86,6 +95,8 @@ const router = useRouter();
 const workoutStore = useWorkoutStore();
 
 const plans = computed(() => workoutStore.plans);
+const plansLoading = computed(() => workoutStore.plansLoading);
+const plansError = computed(() => workoutStore.plansError);
 const isWorkoutActive = computed(() => workoutStore.isWorkoutActive);
 const currentPlan = computed(() => workoutStore.currentPlan);
 const workoutDuration = computed(() => workoutStore.workoutDuration);
@@ -108,6 +119,10 @@ const startWorkout = (planId: string) => {
 
 const formatDuration = (seconds: number): string => {
   return workoutStore.formatDuration(seconds);
+};
+
+const retryLoadPlans = () => {
+  workoutStore.loadPlans();
 };
 </script>
 
@@ -136,6 +151,21 @@ const formatDuration = (seconds: number): string => {
   font-size: 1.125rem;
   color: #666;
   margin: 0;
+}
+
+.plans-status {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.plans-status--error {
+  color: #b00020;
+}
+
+.plans-status--error .btn {
+  margin-top: 1rem;
+  display: inline-flex;
 }
 
 .plans-grid {

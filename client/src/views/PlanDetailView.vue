@@ -70,6 +70,10 @@
     </div>
   </div>
   
+  <div v-else-if="plansLoading" class="not-found">
+    <p>A carregar plano...</p>
+  </div>
+
   <div v-else class="not-found">
     <i class="fas fa-exclamation-triangle"></i>
     <h2>Plan not found</h2>
@@ -99,6 +103,7 @@ const plan = computed(() => {
   return workoutStore.plans.find(p => p.id === props.id);
 });
 
+const plansLoading = computed(() => workoutStore.plansLoading);
 const isWorkoutActive = computed(() => workoutStore.isWorkoutActive);
 
 const getTotalExercises = (): number => {

@@ -1,23 +1,40 @@
 {
-  "name": "app-de-ginasio",
+  "name": "gym-tracker",
   "version": "1.0.0",
-  "description": "Vue 3 application for workout plan management",
-  "type": "module",
+  "description": "Gym workout plan tracker — NestJS + Vue monolith",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "start": "serve dist -p 8000"
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "nest start --watch",
+    "dev:client": "vite --config client/vite.config.ts",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --config client/vite.config.ts",
+    "build:server": "nest build",
+    "start": "NODE_ENV=production node dist/main",
+    "start:prod": "NODE_ENV=production node dist/main",
+    "seed": "ts-node src/seed/run-seed.ts",
+    "seed:sync": "ts-node src/seed/run-sync.ts"
   },
   "dependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/serve-static": "^5.0.0",
+    "mongodb": "^6.12.0",
     "pinia": "^2.3.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@types/express": "^5.0.0",
     "@types/node": "^20.10.0",
     "@vitejs/plugin-vue": "^4.6.2",
-    "serve": "^14.2.4",
+    "concurrently": "^9.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "vite": "^5.0.0",
     "vue-tsc": "^2.0.0"

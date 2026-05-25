@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { WorkoutPlan, WorkoutSession, ActiveWorkout, Exercise } from '@/types';
-import { workoutPlans } from '@/data/workoutPlans';
+import { fetchWorkoutPlans } from '@/api/workoutPlans';
 
 export const useWorkoutStore = defineStore('workout', () => {
   // State
-  const plans = ref<WorkoutPlan[]>(workoutPlans);
+  const plans = ref<WorkoutPlan[]>([]);
+  const plansLoading = ref(false);
+  const plansError = ref<string | null>(null);
   const activeWorkout = ref<ActiveWorkout | null>(null);
   const workoutHistory = ref<WorkoutSession[]>([]);
   const selectedExercise = ref<Exercise | null>(null);
@@ -83,6 +85,21 @@ export const useWorkoutStore = defineStore('workout', () => {
     }
   };
 
+  const loadPlans = async () => {
+    plansLoading.value = true;
+    plansError.value = null;
+
+    try {
+      plans.value = await fetchWorkoutPlans();
+    } catch (error) {
+      plansError.value =
+        error instanceof Error ? error.message : 'Erro ao carregar planos';
+      console.error(plansError.value);
+    } finally {
+      plansLoading.value = false;
+    }
+  };
+
   const formatDuration = (seconds: number): string => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
@@ -100,6 +117,8 @@ export const useWorkoutStore = defineStore('workout', () => {
   return {
     // State
     plans,
+    plansLoading,
+    plansError,
     activeWorkout,
     workoutHistory,
     selectedExercise,
@@ -116,6 +135,7 @@ export const useWorkoutStore = defineStore('workout', () => {
     cancelWorkout,
     showExerciseDetail,
     hideExerciseDetail,
+    loadPlans,
     formatDuration
   };
 });

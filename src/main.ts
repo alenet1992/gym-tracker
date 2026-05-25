@@ -1,21 +1,21 @@
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import router from './router';
-import App from './App.vue';
-import './style.css';
+import 'reflect-metadata';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { DatabaseService } from './database/database.service';
 
-const app = createApp(App);
-const pinia = createPinia();
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
-app.use(pinia);
-app.use(router);
+  const databaseService = app.get(DatabaseService);
+  await databaseService.connect();
 
-app.mount('#app');
+  const port = Number(process.env.PORT) || 3000;
+  await app.listen(port);
 
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', () => {
-		navigator.serviceWorker.register('/sw.js')
-			.then(reg => console.log('Service Worker registrado:', reg))
-			.catch(err => console.warn('Falha ao registrar Service Worker:', err));
-	});
+  console.log(`API a correr em http://localhost:${port}`);
 }
+
+bootstrap().catch((err) => {
+  console.error('Falha ao iniciar servidor:', err);
+  process.exit(1);
+});
