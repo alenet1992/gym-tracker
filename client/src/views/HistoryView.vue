@@ -5,7 +5,22 @@
       <p class="page-subtitle">Acompanhe seu progresso e conquistas</p>
     </div>
 
-    <div v-if="workoutHistory.length === 0" class="empty-state">
+    <div v-if="historyLoading" class="empty-state">
+      <i class="fas fa-spinner fa-spin"></i>
+      <h3>A carregar histórico...</h3>
+    </div>
+
+    <div v-else-if="historyError" class="empty-state">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>Erro ao carregar histórico</h3>
+      <p>{{ historyError }}</p>
+      <button class="btn btn-primary" @click="retryLoadHistory">
+        <i class="fas fa-redo"></i>
+        Tentar novamente
+      </button>
+    </div>
+
+    <div v-else-if="workoutHistory.length === 0" class="empty-state">
       <i class="fas fa-calendar-alt"></i>
       <h3>No workouts completed</h3>
         <p>Start your first workout to see history here.</p>
@@ -61,7 +76,7 @@
       <div class="history-list">
         <div 
           v-for="(session, index) in workoutHistory" 
-          :key="index"
+          :key="session.id"
           class="history-item"
           @click="toggleSessionDetails(index)"
         >
@@ -69,6 +84,10 @@
             <div class="session-info">
               <h3 class="session-title">{{ session.planName }}</h3>
               <div class="session-meta">
+                <span class="session-day">
+                  <i class="fas fa-dumbbell"></i>
+                  {{ session.day }}
+                </span>
                 <span class="session-date">
                   <i class="fas fa-calendar"></i>
                   {{ formatDate(session.date) }}
@@ -135,7 +154,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useWorkoutStore } from '@/stores/workoutStore';
 import type { WorkoutSession } from '@/types';
@@ -146,7 +165,17 @@ const workoutStore = useWorkoutStore();
 const expandedSessions = ref(new Set<number>());
 
 const workoutHistory = computed(() => workoutStore.workoutHistory);
+const historyLoading = computed(() => workoutStore.historyLoading);
+const historyError = computed(() => workoutStore.historyError);
 const isWorkoutActive = computed(() => workoutStore.isWorkoutActive);
+
+onMounted(() => {
+  workoutStore.loadWorkoutHistory();
+});
+
+const retryLoadHistory = () => {
+  workoutStore.loadWorkoutHistory();
+};
 
 const totalWorkoutTime = computed(() => {
   return workoutHistory.value.reduce((total, session) => total + session.duration, 0);

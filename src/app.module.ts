@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
 import { WorkoutPlansModule } from './workout-plans/workout-plans.module';
+import { WorkoutSessionsModule } from './workout-sessions/workout-sessions.module';
 
 const isVercel = process.env.VERCEL === '1';
 const isProduction = process.env.NODE_ENV === 'production';
@@ -16,6 +17,7 @@ const shouldServeStatic = isProduction && !isVercel;
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
     WorkoutPlansModule,
+    WorkoutSessionsModule,
     SeedModule,
     ...(shouldServeStatic
       ? [

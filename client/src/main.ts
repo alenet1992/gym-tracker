@@ -13,6 +13,7 @@ app.use(router);
 
 const workoutStore = useWorkoutStore();
 workoutStore.loadPlans();
+workoutStore.loadWorkoutHistory();
 
 app.mount('#app');
 

@@ -29,6 +29,18 @@ const routes: RouteRecordRaw[] = [
     props: true
   },
   {
+    path: '/history',
+    name: 'History',
+    component: () => import('@/views/HistoryView.vue'),
+    meta: { title: 'Workout History' }
+  },
+  {
+    path: '/stats',
+    name: 'Stats',
+    component: () => import('@/views/StatsView.vue'),
+    meta: { title: 'Workout Statistics' }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     redirect: '/'

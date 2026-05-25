@@ -1,5 +1,19 @@
 <template>
   <div id="app">
+    <header class="app-header">
+      <div class="container header-content">
+        <router-link to="/plans" class="logo">
+          <i class="fas fa-dumbbell"></i>
+          <h1>GymTracker</h1>
+        </router-link>
+        <nav class="desktop-nav">
+          <router-link to="/plans" class="nav-link">Planos</router-link>
+          <router-link to="/history" class="nav-link">Histórico</router-link>
+          <router-link to="/stats" class="nav-link">Estatísticas</router-link>
+        </nav>
+      </div>
+    </header>
+
     <main class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="page-transition" mode="out-in">
@@ -8,19 +22,44 @@
       </router-view>
     </main>
 
-    <ExerciseModal />
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <router-link to="/plans" class="nav-item">
+        <i class="fas fa-list-ul"></i>
+        <span>Planos</span>
+      </router-link>
 
+      <router-link
+        v-if="isWorkoutActive"
+        :to="activeWorkoutTo"
+        class="nav-item nav-item--executing"
+      >
+        <span class="nav-pulse" aria-hidden="true"></span>
+        <i class="fas fa-play-circle"></i>
+        <span>A executar</span>
+      </router-link>
+
+      <router-link to="/stats" class="nav-item">
+        <i class="fas fa-chart-bar"></i>
+        <span>Estatísticas</span>
+      </router-link>
+    </nav>
+
+    <ExerciseModal />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
 import { useWorkoutStore } from '@/stores/workoutStore';
 import ExerciseModal from '@/components/ExerciseModal.vue';
 
-const route = useRoute();
 const workoutStore = useWorkoutStore();
+
+const isWorkoutActive = computed(() => workoutStore.isWorkoutActive);
+const activeWorkoutTo = computed(() => {
+  const planId = workoutStore.currentPlan?.id;
+  return planId ? `/workout/${planId}` : '/plans';
+});
 
 
 // Prevent page reload during active workout
@@ -66,6 +105,8 @@ window.addEventListener('beforeunload', (e) => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo i {
@@ -109,35 +150,67 @@ window.addEventListener('beforeunload', (e) => {
 .main-content {
   flex: 1;
   padding: 2rem 0;
-  padding-bottom: 6rem;
 }
 
 .bottom-nav {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   background: #fff;
   border-top: 2px solid #111;
-  padding: 1rem 0;
-  display: flex;
+  padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom, 0px));
   justify-content: space-around;
+  align-items: stretch;
   z-index: 1000;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .nav-item {
+  position: relative;
+  flex: 1;
+  max-width: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem 1rem;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   transition: all 0.2s;
   color: #666;
   text-decoration: none;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   border: 2px solid transparent;
+}
+
+.nav-item--executing {
+  color: #111;
+}
+
+.nav-pulse {
+  position: absolute;
+  top: 0.35rem;
+  right: calc(50% - 1.35rem);
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #111;
+  border-radius: 50%;
+  animation: nav-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes nav-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.25);
+  }
 }
 
 .nav-item:hover {
@@ -174,7 +247,15 @@ window.addEventListener('beforeunload', (e) => {
   .desktop-nav {
     display: none;
   }
-  
+
+  .app-header h1 {
+    font-size: 1.125rem;
+  }
+
+  .main-content {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
   .bottom-nav {
     display: flex;
   }
@@ -183,6 +264,10 @@ window.addEventListener('beforeunload', (e) => {
 @media (min-width: 769px) {
   .bottom-nav {
     display: none;
+  }
+
+  .desktop-nav {
+    display: flex;
   }
 }
 </style>

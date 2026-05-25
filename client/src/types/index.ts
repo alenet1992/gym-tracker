@@ -25,9 +25,12 @@ export interface WorkoutPlan {
 }
 
 export interface WorkoutSession {
+  id: string;
   planId: string;
   planName: string;
+  day: string;
   date: string;
+  startedAt: string;
   duration: number;
   completedExercises: string[];
 }

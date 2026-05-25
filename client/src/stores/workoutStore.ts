@@ -2,6 +2,10 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { WorkoutPlan, WorkoutSession, ActiveWorkout, Exercise } from '@/types';
 import { fetchWorkoutPlans } from '@/api/workoutPlans';
+import {
+  createWorkoutSession,
+  fetchWorkoutSessions,
+} from '@/api/workoutSessions';
 
 export const useWorkoutStore = defineStore('workout', () => {
   // State
@@ -10,6 +14,9 @@ export const useWorkoutStore = defineStore('workout', () => {
   const plansError = ref<string | null>(null);
   const activeWorkout = ref<ActiveWorkout | null>(null);
   const workoutHistory = ref<WorkoutSession[]>([]);
+  const historyLoading = ref(false);
+  const historyError = ref<string | null>(null);
+  const finishError = ref<string | null>(null);
   const selectedExercise = ref<Exercise | null>(null);
   const isExerciseModalVisible = ref(false);
 
@@ -26,7 +33,7 @@ export const useWorkoutStore = defineStore('workout', () => {
     activeWorkout.value = {
       plan,
       startTime: Date.now(),
-      completedExercises: new Set()
+      completedExercises: new Set(),
     };
   };
 
@@ -40,19 +47,32 @@ export const useWorkoutStore = defineStore('workout', () => {
     return activeWorkout.value?.completedExercises.has(exerciseName) || false;
   };
 
-  const finishWorkout = () => {
-    if (activeWorkout.value) {
-      const session: WorkoutSession = {
-        planId: activeWorkout.value.plan.id,
-        planName: activeWorkout.value.plan.name,
-        date: new Date().toISOString(),
-        duration: Math.floor((Date.now() - activeWorkout.value.startTime) / 1000),
-        completedExercises: Array.from(activeWorkout.value.completedExercises)
-      };
-      
+  const finishWorkout = async (): Promise<boolean> => {
+    if (!activeWorkout.value) return false;
+
+    finishError.value = null;
+    const workout = activeWorkout.value;
+    const durationSeconds = Math.floor(
+      (Date.now() - workout.startTime) / 1000,
+    );
+
+    try {
+      const session = await createWorkoutSession({
+        planId: workout.plan.id,
+        planName: workout.plan.name,
+        startedAt: new Date(workout.startTime).toISOString(),
+        durationSeconds,
+        completedExercises: Array.from(workout.completedExercises),
+      });
+
       workoutHistory.value.unshift(session);
-      saveHistoryToStorage();
       activeWorkout.value = null;
+      return true;
+    } catch (error) {
+      finishError.value =
+        error instanceof Error ? error.message : 'Erro ao guardar treino';
+      console.error(finishError.value);
+      return false;
     }
   };
 
@@ -70,18 +90,18 @@ export const useWorkoutStore = defineStore('workout', () => {
     isExerciseModalVisible.value = false;
   };
 
-  const saveHistoryToStorage = () => {
-    localStorage.setItem('workout-history', JSON.stringify(workoutHistory.value));
-  };
+  const loadWorkoutHistory = async () => {
+    historyLoading.value = true;
+    historyError.value = null;
 
-  const loadHistoryFromStorage = () => {
-    const stored = localStorage.getItem('workout-history');
-    if (stored) {
-      try {
-        workoutHistory.value = JSON.parse(stored);
-      } catch (error) {
-        console.error('Erro ao carregar histórico:', error);
-      }
+    try {
+      workoutHistory.value = await fetchWorkoutSessions();
+    } catch (error) {
+      historyError.value =
+        error instanceof Error ? error.message : 'Erro ao carregar histórico';
+      console.error(historyError.value);
+    } finally {
+      historyLoading.value = false;
     }
   };
 
@@ -104,15 +124,12 @@ export const useWorkoutStore = defineStore('workout', () => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
-    
+
     if (hours > 0) {
       return `${hours}h ${minutes}m ${secs}s`;
     }
     return `${minutes}m ${secs}s`;
   };
-
-  // Initialize
-  loadHistoryFromStorage();
 
   return {
     // State
@@ -121,6 +138,9 @@ export const useWorkoutStore = defineStore('workout', () => {
     plansError,
     activeWorkout,
     workoutHistory,
+    historyLoading,
+    historyError,
+    finishError,
     selectedExercise,
     isExerciseModalVisible,
     // Getters
@@ -136,6 +156,7 @@ export const useWorkoutStore = defineStore('workout', () => {
     showExerciseDetail,
     hideExerciseDetail,
     loadPlans,
-    formatDuration
+    loadWorkoutHistory,
+    formatDuration,
   };
 });

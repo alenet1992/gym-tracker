@@ -93,14 +93,15 @@
     <div v-if="showFinishConfirm" class="modal-overlay" @click="showFinishConfirm = false">
       <div class="modal-content" @click.stop>
         <h3>Finish Workout</h3>
-        <p>Are you sure you want to finish the workout? Progress will be saved to history.</p>
+        <p>Tens a certeza que queres finalizar o treino? O progresso será guardado no histórico.</p>
+        <p v-if="finishError" class="modal-error">{{ finishError }}</p>
         <div class="modal-actions">
-          <button class="btn btn-secondary" @click="showFinishConfirm = false">
+          <button class="btn btn-secondary" @click="showFinishConfirm = false" :disabled="isFinishing">
             Cancelar
           </button>
-          <button class="btn btn-success" @click="finishWorkout">
+          <button class="btn btn-success" @click="finishWorkout" :disabled="isFinishing">
             <i class="fas fa-check"></i>
-            Finalizar
+            {{ isFinishing ? 'A guardar...' : 'Finalizar' }}
           </button>
         </div>
       </div>
@@ -151,7 +152,10 @@ const workoutStore = useWorkoutStore();
 
 const showFinishConfirm = ref(false);
 const showCancelConfirm = ref(false);
+const isFinishing = ref(false);
 const timerInterval = ref<number | null>(null);
+
+const finishError = computed(() => workoutStore.finishError);
 
 const activeWorkout = computed(() => workoutStore.activeWorkout);
 const workoutDuration = computed(() => workoutStore.workoutDuration);
@@ -201,10 +205,15 @@ const formatDuration = (seconds: number): string => {
   return workoutStore.formatDuration(seconds);
 };
 
-const finishWorkout = () => {
-  workoutStore.finishWorkout();
-  showFinishConfirm.value = false;
-  router.push('/history');
+const finishWorkout = async () => {
+  isFinishing.value = true;
+  const saved = await workoutStore.finishWorkout();
+  isFinishing.value = false;
+
+  if (saved) {
+    showFinishConfirm.value = false;
+    router.push('/history');
+  }
 };
 
 const cancelWorkout = () => {
@@ -587,6 +596,12 @@ input[type="checkbox"]:checked + .checkbox-label i {
   margin: 0 0 2rem 0;
   color: #666;
   line-height: 1.6;
+}
+
+.modal-error {
+  color: #b00020;
+  font-size: 0.875rem;
+  margin: -1rem 0 1rem 0 !important;
 }
 
 .modal-actions {
