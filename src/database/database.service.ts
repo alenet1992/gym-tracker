@@ -15,13 +15,28 @@ export class DatabaseService implements OnModuleDestroy {
   async connect(): Promise<Db> {
     if (this.db) return this.db;
 
-    const uri =
-      this.configService.get<string>('MONGODB_URI') ??
-      'mongodb://127.0.0.1:27017/gym-tracker';
+    const isVercel = process.env.VERCEL === '1';
+    const configuredUri = this.configService.get<string>('MONGODB_URI');
+    const uri = configuredUri ?? 'mongodb://127.0.0.1:27017/gym-tracker';
     const dbName =
       this.configService.get<string>('MONGODB_DB_NAME') ?? 'gym-tracker';
 
-    this.client = new MongoClient(uri, { serverSelectionTimeoutMS: 5000 });
+    if (isVercel) {
+      if (!configuredUri) {
+        throw new Error(
+          'MONGODB_URI is not set. Add it in Vercel → Project Settings → Environment Variables.',
+        );
+      }
+      if (/localhost|127\.0\.0\.1/.test(uri)) {
+        throw new Error(
+          'MONGODB_URI cannot use localhost on Vercel. Use a MongoDB Atlas connection string.',
+        );
+      }
+    }
+
+    this.client = new MongoClient(uri, {
+      serverSelectionTimeoutMS: isVercel ? 10_000 : 5_000,
+    });
     await this.client.connect();
     this.db = this.client.db(dbName);
     return this.db;

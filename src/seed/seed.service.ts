@@ -7,7 +7,11 @@ export class SeedService implements OnModuleInit {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async onModuleInit(): Promise<void> {
-    await this.seedIfEmpty();
+    try {
+      await this.seedIfEmpty();
+    } catch (err) {
+      console.error('Seed on startup failed (API will still run):', err);
+    }
   }
 
   private async ensureIdIndex(): Promise<void> {
