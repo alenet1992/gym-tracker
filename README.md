@@ -58,7 +58,7 @@ Para atualizar planos existentes:
 npm run seed:sync
 ```
 
-### 4. Produção
+### 4. Produção (local)
 
 ```bash
 npm run build
@@ -66,6 +66,21 @@ npm run start:prod
 ```
 
 O NestJS serve a API e os ficheiros estáticos do frontend em `http://localhost:3000`.
+
+### 5. Vercel
+
+O projeto inclui `vercel.json` com a configuração correta:
+
+- **Frontend** → ficheiros estáticos em `dist/client` (CDN)
+- **API** → serverless function em `api/index.ts` (rotas `/api/*`)
+
+**No dashboard da Vercel:**
+
+1. Não alteres manualmente o **Output Directory** nem o **Build Command** — o `vercel.json` gere isto
+2. Adiciona as variáveis de ambiente:
+   - `MONGODB_URI` — connection string do MongoDB Atlas
+   - `MONGODB_DB_NAME` — (opcional) nome da base de dados
+3. No MongoDB Atlas, permite acesso de `0.0.0.0/0` em Network Access (necessário para funções serverless)
 
 ### Endpoints
 

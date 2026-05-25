@@ -7,7 +7,9 @@ import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
 import { WorkoutPlansModule } from './workout-plans/workout-plans.module';
 
+const isVercel = process.env.VERCEL === '1';
 const isProduction = process.env.NODE_ENV === 'production';
+const shouldServeStatic = isProduction && !isVercel;
 
 @Module({
   imports: [
@@ -15,7 +17,7 @@ const isProduction = process.env.NODE_ENV === 'production';
     DatabaseModule,
     WorkoutPlansModule,
     SeedModule,
-    ...(isProduction
+    ...(shouldServeStatic
       ? [
           ServeStaticModule.forRoot({
             rootPath: join(process.cwd(), 'dist', 'client'),

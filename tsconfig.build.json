@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "dist", "client", "src/seed/run-seed.ts", "src/seed/run-sync.ts"]
+  "exclude": ["node_modules", "dist", "client", "api", "src/seed/run-seed.ts", "src/seed/run-sync.ts"]
 }
