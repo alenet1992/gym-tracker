@@ -1,11 +1,14 @@
 import { Injectable, OnModuleDestroy } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { MongoClient, type Db, type Collection } from 'mongodb';
+import type { MealLogDocument, MealPlan } from '../common/types/meal-plan.types';
 import type { WorkoutPlan } from '../common/types/workout-plan.types';
 import type { WorkoutSessionDocument } from '../common/types/workout-session.types';
 
 export const WORKOUT_PLANS_COLLECTION = 'workout_plans';
 export const WORKOUT_SESSIONS_COLLECTION = 'workout_sessions';
+export const MEAL_PLANS_COLLECTION = 'meal_plans';
+export const MEAL_LOGS_COLLECTION = 'meal_logs';
 
 @Injectable()
 export class DatabaseService implements OnModuleDestroy {
@@ -58,6 +61,20 @@ export class DatabaseService implements OnModuleDestroy {
     return this.db.collection<WorkoutSessionDocument>(
       WORKOUT_SESSIONS_COLLECTION,
     );
+  }
+
+  getMealPlansCollection(): Collection<MealPlan> {
+    if (!this.db) {
+      throw new Error('Database not connected. Call connect() first.');
+    }
+    return this.db.collection<MealPlan>(MEAL_PLANS_COLLECTION);
+  }
+
+  getMealLogsCollection(): Collection<MealLogDocument> {
+    if (!this.db) {
+      throw new Error('Database not connected. Call connect() first.');
+    }
+    return this.db.collection<MealLogDocument>(MEAL_LOGS_COLLECTION);
   }
 
   async onModuleDestroy(): Promise<void> {

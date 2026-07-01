@@ -41,6 +41,12 @@ const routes: RouteRecordRaw[] = [
     meta: { title: 'Workout Statistics' }
   },
   {
+    path: '/nutrition',
+    name: 'Nutrition',
+    component: () => import('@/views/NutritionView.vue'),
+    meta: { title: 'Plano Alimentar' }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     redirect: '/'

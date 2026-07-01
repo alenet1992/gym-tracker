@@ -11,6 +11,7 @@ async function main() {
 
   await databaseService.connect();
   await seedService.seedIfEmpty();
+  await seedService.seedMealPlanIfEmpty();
   await app.close();
 }
 

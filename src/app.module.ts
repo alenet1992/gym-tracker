@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
+import { MealPlansModule } from './meal-plans/meal-plans.module';
 import { WorkoutPlansModule } from './workout-plans/workout-plans.module';
 import { WorkoutSessionsModule } from './workout-sessions/workout-sessions.module';
 
@@ -18,6 +19,7 @@ const shouldServeStatic = isProduction && !isVercel;
     DatabaseModule,
     WorkoutPlansModule,
     WorkoutSessionsModule,
+    MealPlansModule,
     SeedModule,
     ...(shouldServeStatic
       ? [

@@ -8,6 +8,7 @@
         </router-link>
         <nav class="desktop-nav">
           <router-link to="/plans" class="nav-link">Planos</router-link>
+          <router-link to="/nutrition" class="nav-link">Alimentação</router-link>
           <router-link to="/history" class="nav-link">Histórico</router-link>
           <router-link to="/stats" class="nav-link">Estatísticas</router-link>
         </nav>
@@ -28,6 +29,11 @@
         <span>Planos</span>
       </router-link>
 
+      <router-link to="/nutrition" class="nav-item">
+        <i class="fas fa-utensils"></i>
+        <span>Alimentação</span>
+      </router-link>
+
       <router-link
         v-if="isWorkoutActive"
         :to="activeWorkoutTo"
@@ -40,7 +46,7 @@
 
       <router-link to="/stats" class="nav-item">
         <i class="fas fa-chart-bar"></i>
-        <span>Estatísticas</span>
+        <span>Stats</span>
       </router-link>
     </nav>
 
@@ -170,7 +176,7 @@ window.addEventListener('beforeunload', (e) => {
 .nav-item {
   position: relative;
   flex: 1;
-  max-width: 8rem;
+  max-width: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
